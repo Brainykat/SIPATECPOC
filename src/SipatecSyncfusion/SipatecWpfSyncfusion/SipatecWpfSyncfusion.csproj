@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.SfDiagram.WPF" Version="19.2.0.56" />
+  </ItemGroup>
+
 </Project>
