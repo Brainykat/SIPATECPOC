@@ -1,12 +1,73 @@
 ﻿<Window x:Class="SipatecWpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:diag="http://mindfusion.eu/diagramming/wpf"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SipatecWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <diag:Ruler Unit="Millimeter" ProjectionColor="#30000000">
+            <diag:Diagram Name="diagram" Grid.Column="2"
+									MeasureUnit="Millimeter"
+									ShowAnchors="Auto"
+									BackBrush="White"
+									AlignToGrid="True"
+									GridOffsetX="0"
+									GridOffsetY="0"
+									GridSizeX="5"
+									GridSizeY="5"
+									ShapeHandlesStyle="HatchHandles3"
+									AdjustmentHandlesSize="2.5"
+									ShowGrid="True" 
+									Behavior="DrawLinks" 
+									ShapeBrush="LightSteelBlue"
+									DragDrop.DragOver="diagram_DragOver"
+									DragDrop.Drop="diagram_Drop" 
+									NodeActivated="diagram_NodeActivated"
+									NodeDeactivated="diagram_NodeDeactivated"
+									NodeClicked="diagram_NodeClicked"
+									LinkClicked="diagram_LinkClicked"
+									AllowInplaceEdit="True"
+									AllowDrop="True">
+                <diag:Diagram.GridPen>
+                    <Pen Brush="Black" Thickness="1" />
+                </diag:Diagram.GridPen>
+                <diag:Diagram.ShapeNodeStyle>
+                    <Style TargetType="{x:Type diag:ShapeNode}">
+                        <Setter Property="Brush" Value="LightSteelBlue" />
+                        <Setter Property="StrokeThickness" Value="0.2" />
+                        <Setter Property="FontSize" Value="4" />
+                    </Style>
+                </diag:Diagram.ShapeNodeStyle>
+                <diag:Diagram.TableNodeStyle>
+                    <Style TargetType="{x:Type diag:TableNode}">
+                        <Setter Property="StrokeThickness" Value="0.2" />
+                        <Setter Property="FontSize" Value="4" />
+                    </Style>
+                </diag:Diagram.TableNodeStyle>
+                <diag:Diagram.ContainerNodeStyle>
+                    <Style TargetType="{x:Type diag:ContainerNode}">
+                        <Setter Property="StrokeThickness" Value="0.2" />
+                        <Setter Property="FontSize" Value="4" />
+                    </Style>
+                </diag:Diagram.ContainerNodeStyle>
+                <diag:Diagram.DiagramLinkStyle>
+                    <Style TargetType="{x:Type diag:DiagramLink}">
+                        <Setter Property="Stroke" Value="#FF000000" />
+                        <Setter Property="StrokeThickness" Value="0.2" />
+                        <Setter Property="HeadStrokeThickness" Value="0.2" />
+                        <Setter Property="Brush" Value="#FFFFFFFF" />
+                        <Setter Property="FontSize" Value="4" />
+                    </Style>
+                </diag:Diagram.DiagramLinkStyle>
+            </diag:Diagram>
+        </diag:Ruler>
     </Grid>
+    
 </Window>

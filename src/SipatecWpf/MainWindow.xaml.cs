@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MindFusion.Diagramming.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,11 @@ namespace SipatecWpf
     {
       InitializeComponent();
     }
+    private void diagram_NodeDeactivated(object sender, NodeEventArgs e) {}
+    private void diagram_LinkClicked(object sender, LinkEventArgs e) { }
+    private void diagram_NodeClicked(object sender, NodeEventArgs e) { }
+    private void diagram_NodeActivated(object sender, NodeEventArgs e) { }
+    private void diagram_DragOver(object sender, DragEventArgs e) { }
+    private void diagram_Drop(object sender, DragEventArgs e) { }
   }
 }
