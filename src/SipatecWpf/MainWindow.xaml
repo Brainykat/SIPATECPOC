@@ -82,6 +82,7 @@
             <TabControl>
                 <TabItem Header="Nodes"></TabItem>
                 <TabItem Header="Connectors"></TabItem>
+                <TabItem Header="Properties"></TabItem>
             </TabControl>
         </Grid>
     </Grid>
