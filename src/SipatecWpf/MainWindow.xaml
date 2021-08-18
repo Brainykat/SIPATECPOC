@@ -7,13 +7,23 @@
         xmlns:local="clr-namespace:SipatecWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>-->
+        <!--<Menu Height="38" Name="menu1" Margin="10,10,344,0" VerticalAlignment="Top"
+              BorderThickness="2" Foreground="White" FontSize="16" FontWeight="Bold">
+            
+        </Menu>-->
         <diag:Ruler Unit="Millimeter" ProjectionColor="#30000000">
-            <diag:Diagram Name="diagram" Grid.Column="2"
+            <diag:Diagram Name="diagram" Grid.Column="2" Grid.Row="2"
 									MeasureUnit="Millimeter"
 									ShowAnchors="Auto"
 									BackBrush="White"
@@ -68,6 +78,12 @@
                 </diag:Diagram.DiagramLinkStyle>
             </diag:Diagram>
         </diag:Ruler>
+        <Grid Grid.Column="1" Width="180">
+            <TabControl>
+                <TabItem Header="Nodes"></TabItem>
+                <TabItem Header="Connectors"></TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
     
 </Window>
