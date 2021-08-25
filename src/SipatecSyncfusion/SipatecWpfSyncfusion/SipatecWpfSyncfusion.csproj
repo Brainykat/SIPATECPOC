@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Syncfusion.SfDiagram.WPF" Version="19.2.0.56" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="19.2.0.57" />
   </ItemGroup>
 
 </Project>
