@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Properties>
+  <drawing>
+  </drawing>
+  <Tech>
+    <Name>
+      
+    </Name>
+    <MaxDiameter>
+      25
+    </MaxDiameter>
+    <Thickness>
+      
+    </Thickness>
+  </Tech>
+  <TechProperties>
+    <Id></Id>
+  </TechProperties>
+</Properties>
+
+<!--Setup
+    Components (Nodes,Connectors) XML files -> Edit, Update, Delete, Add
+    Runtime -> Consuming this properties in doing the job generating the drawing
+    IAN => for now hard coded components limiting user to only those 
+          1. Save tech properties in xml together with drawing props
+          2. 3 example components for air thermo dynamics (pipe, Fan, Ventilator)
+              - Drawing this custom components
+              - User defining all properties
+              - for connectors defining inputs from outputs and both
+              
+    Connection Rules  => Definition limits and possibilities [Future]
+    Notes
+      . Imported Images store them in a relative path in the solution 
+-->

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
-         xmlns:Stencil="clr-namespace:Syncfusion.UI.Xaml.Diagram.Stencil;assembly=Syncfusion.SfDiagram.WPF"
+        xmlns:stencil="clr-namespace:Syncfusion.UI.Xaml.Diagram.Stencil;assembly=Syncfusion.SfDiagram.WPF"
         xmlns:local="clr-namespace:SipatecSync"
         mc:Ignorable="d"
         Title="Sipatec" Height="450" Width="800">
@@ -61,22 +61,96 @@
         </syncfusion:SfDiagram>
         
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-            <TextBlock Text=" Custom Shapes" Grid.Row="1" Grid.Column="0"
+            
+                <TextBlock Text=" Custom Shapes" Grid.Row="1" Grid.Column="0"
                        FontSize="17" 
                        FontWeight="SemiBold" 
                        Foreground="#2b579a" 
                        HorizontalAlignment="Left" 
                        Margin="10,5,0,5" 
                        />
-            
-        <syncfusion:Stencil Grid.Row="1" Grid.Column="0" Width="200" Title="Shapes">
-            <syncfusion:Stencil.Categories>
+            <!--<stencil:Stencil x:Name="stencil" ExpandMode="All" BorderBrush="Black" BorderThickness="0,0,1,0" >
+                --><!--Initialize the SymbolSource--><!--
+                <stencil:Stencil.SymbolSource>
+                    --><!--Define the SymbolCollection--><!--
+                    <local:SymbolCollection>
+                        <Syncfusion:SymbolViewModel Symbol = "User" SymbolTemplate="{StaticResource symboltemplate}"/>
+                        <syncfusion:NodeViewModel x:Name="node" UnitHeight="70" UnitWidth="100" OffsetX="100" OffsetY="100" Shape="{StaticResource Rectangle}">
+                        </syncfusion:NodeViewModel>
+                        <syncfusion:ConnectorViewModel SourcePoint = "100,100" TargetPoint="200,200"/>
+                        --><!--Define the DiagramElement- Group--><!--
+                        <syncfusion:GroupViewModel>
+                            --><!--Creates the Groupable Nodes--><!--
+                            <syncfusion:GroupViewModel.Nodes>
+                                <syncfusion:NodeCollection>
+                                    <syncfusion:NodeViewModel UnitHeight = "70" ID="srcnode" OffsetX="0" OffsetY="300" UnitWidth="100" Shape="{StaticResource Rectangle}"></syncfusion:NodeViewModel>
+                                    <syncfusion:NodeViewModel UnitHeight = "70" ID="tarnode" OffsetX="100" OffsetY="500" UnitWidth="100" Shape="{StaticResource Rectangle}"></syncfusion:NodeViewModel>
+                                </syncfusion:NodeCollection>
+                            </syncfusion:GroupViewModel.Nodes>
+                            --><!--Creates the Groupable Connectors--><!--
+                            <syncfusion:GroupViewModel.Connectors>
+                                <syncfusion:ConnectorCollection>
+                                    <syncfusion:ConnectorViewModel SourceNodeID = "srcnode" TargetNodeID="tarnode"/>
+                                </syncfusion:ConnectorCollection>
+                            </syncfusion:GroupViewModel.Connectors>
+                        </syncfusion:GroupViewModel>
+                    </local:SymbolCollection>
+                </stencil:Stencil.SymbolSource>
+            </stencil:Stencil>-->
+            <syncfusion:Stencil Grid.Row="1" Grid.Column="0" Width="200" Title="Shapes">
+                <syncfusion:Stencil.SymbolSource>
+                    <!--Define the SymbolCollection-->
+                    <!--<syncfusion:SymbolCollection>
+                        <syncfusion:NodeViewModel Key = "Basic Shapes" Name="Triangle" OffsetX="100" OffsetY="100" UnitHeight="100" UnitWidth="100"  Shape="{StaticResource Triangle}" ShapeStyle="{StaticResource nodestyle}" >
+                        </syncfusion:NodeViewModel>
+                    </syncfusion:SymbolCollection>-->
+
+                    <local:SymbolCollection>
+                        <syncfusion:NodeViewModel x:Name="node" UnitHeight="70" UnitWidth="100" 
+                                                  OffsetX="100" OffsetY="100" 
+                                                  Shape="{StaticResource Cube}">
+                        </syncfusion:NodeViewModel>
+                        <syncfusion:NodeViewModel x:Name="tank" UnitHeight="70" UnitWidth="100" 
+                                                  OffsetX="100" OffsetY="100" 
+                                                  Shape="{StaticResource Cylinder}">
+                        </syncfusion:NodeViewModel>
+                        <syncfusion:ConnectorViewModel SourcePoint="100,100" TargetPoint="200,200"/>
+                        <!--Define the DiagramElement- Group-->
+                        <syncfusion:GroupViewModel>
+                            <!--Creates the Groupable Nodes-->
+                            <syncfusion:GroupViewModel.Nodes>
+                                <syncfusion:NodeCollection>
+                                    <syncfusion:NodeViewModel UnitHeight="70" ID="srcnode" OffsetX="0" OffsetY="300" 
+                                              UnitWidth="100"
+                                              Shape="{StaticResource  Rectangle}">
+                                    </syncfusion:NodeViewModel>
+                                    <syncfusion:NodeViewModel UnitHeight="70" 
+                                              ID="tarnode"
+                                              OffsetX="100"
+                                              OffsetY="500"
+                                              UnitWidth="100"
+                                              Shape="{StaticResource  Rectangle}">
+                                    </syncfusion:NodeViewModel>
+                                </syncfusion:NodeCollection>
+                            </syncfusion:GroupViewModel.Nodes>
+                            <!--Creates the Groupable Connectors-->
+                            <syncfusion:GroupViewModel.Connectors>
+                                <syncfusion:ConnectorCollection>
+                                    <syncfusion:ConnectorViewModel SourceNodeID="srcnode" TargetNodeID="tarnode"/>
+                                </syncfusion:ConnectorCollection>
+                            </syncfusion:GroupViewModel.Connectors>
+                        </syncfusion:GroupViewModel>
+                    </local:SymbolCollection>
+                </syncfusion:Stencil.SymbolSource>
+                <syncfusion:Stencil.Categories>
                 <syncfusion:StencilCategoryCollection>
-                    <syncfusion:StencilCategory Title="Basic Shapes" Keys="{StaticResource BasicShapes}"/>
-                    <syncfusion:StencilCategory Title="Flow Shapes" Keys="{StaticResource FlowShapes}"/>
+                    <!--<syncfusion:StencilCategory Title="Basic Shapes" Keys="{StaticResource BasicShapes}"/>-->
+                    <!--<syncfusion:StencilCategory Title="Flow Shapes" Keys="{StaticResource FlowShapes}"/>
                     <syncfusion:StencilCategory Title="DataFlow Shapes" Keys="{StaticResource DataFlowShapes}"/>
-                    <syncfusion:StencilCategory Title="Arrow Shapes" Keys="{StaticResource ArrowShapes}"/>
-                    <!--<syncfusion:StencilCategory Title="Custom Shapes" />-->
+                        <syncfusion:StencilCategory Title="Swim Lanes" Keys="{StaticResource SwimlaneShapes}"/>
+                        <syncfusion:StencilCategory Title="Electrical" Keys="{StaticResource ElectricalShapes}"/>-->
+                        <!--<syncfusion:StencilCategory Title="Arrow Shapes" Keys="{StaticResource ArrowShapes}"/>-->
+                        <!--<syncfusion:StencilCategory Title="Custom Shapes" />-->
                 </syncfusion:StencilCategoryCollection>
             </syncfusion:Stencil.Categories>
             
@@ -86,6 +160,7 @@
                 </syncfusion:SymbolGroups>
             </syncfusion:Stencil.SymbolGroups>
         </syncfusion:Stencil>
+            
         </StackPanel>
     </Grid>
 </Window>

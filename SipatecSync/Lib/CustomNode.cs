@@ -8,12 +8,14 @@ namespace SipatecSync.Lib
   {
     public Guid Id { get; set; }
     public PropertyDatatype Datatype { get; set; }
+    public string Value { get; set; }
     public string SIUnit { get; set; }
+    public int Count { get; set; }
 
     private string _CustomContent;
     private string _CustomTemplate;
 
-
+    
     [DataMember]
     public string CustomContent
     {

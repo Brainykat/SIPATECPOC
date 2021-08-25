@@ -1,7 +1,9 @@
 ﻿using SipatecSync.Lib;
 using Syncfusion.UI.Xaml.Diagram;
+using Syncfusion.UI.Xaml.Diagram.Stencil;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +24,86 @@ namespace SipatecSync
   /// </summary>
   public partial class MainWindow : Window
   {
+    //public object SymbolSource { get; set; }
     public MainWindow()
     {
       InitializeComponent();
+      Stencil stencil = new Stencil()
+      {
+        ExpandMode = ExpandMode.All,
+        BorderThickness = new Thickness(0, 0, 1, 0),
+        BorderBrush = new SolidColorBrush(Colors.Black)
+      };
+
+      stencil.SymbolSource = new SymbolCollection();
+
+      //Initialize the diagram element.
+      NodeViewModel node = new NodeViewModel()
+      {
+        UnitHeight = 70,
+        UnitWidth = 100,
+        OffsetX = 100,
+        OffsetY = 100,
+        Shape = App.Current.MainWindow.Resources["Rectangle"],
+      };
+      NodeViewModel tank = new CustomNode()
+      {
+        UnitHeight = 70,
+        UnitWidth = 100,
+        OffsetX = 100,
+        OffsetY = 100,
+        Shape = App.Current.MainWindow.Resources["Cylinder"],
+        Name = "Tank",
+        Datatype = PropertyDatatype.Decimal,
+        SIUnit = "Liters"
+        
+      };
+
+      ConnectorViewModel cvm = new ConnectorViewModel()
+      {
+        SourcePoint = new Point(100, 100),
+        TargetPoint = new Point(200, 200),
+      };
+
+      GroupViewModel grp = new GroupViewModel()
+      {
+        Nodes = new NodeCollection()
+    {
+       new NodeViewModel()
+       {
+         ID="srcnode",
+         UnitHeight=70,
+         UnitWidth=100,
+         OffsetX=0,
+         OffsetY=300,
+         Shape=App.Current.Resources["Rectangle"]
+        },
+       new NodeViewModel()
+       {
+        ID="tarnode",
+        UnitHeight=70,
+        UnitWidth=100,
+        OffsetX=100,
+        OffsetY=500,
+        Shape=App.Current.Resources["Rectangle"]
+        }
+    },
+        Connectors = new ConnectorCollection()
+    {
+      new ConnectorViewModel()
+      {
+        SourceNodeID="srcnode",
+        TargetNodeID="tarnode"
+      }
+    }
+      };
+      //Adding an element to the collection.
+      (stencil.SymbolSource as SymbolCollection).Add(tank);
+      (stencil.SymbolSource as SymbolCollection).Add(node);
+      (stencil.SymbolSource as SymbolCollection).Add(cvm);
+      (stencil.SymbolSource as SymbolCollection).Add(grp);
+
+      //Adding the ISymbol to the SymbolCollection.
     }
     private void MainWindow_ItemAdded(object sender, ItemAddedEventArgs args)
     {
@@ -38,5 +117,9 @@ namespace SipatecSync
         node.Annotations = null;
       }
     }
+    
+  }
+  public class SymbolCollection : ObservableCollection<Object>
+  {
   }
 }
