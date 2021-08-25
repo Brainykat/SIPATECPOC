@@ -1,6 +1,8 @@
 ﻿<Window x:Class="SIPATEC_POC.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:stencil="clr-namespace:Syncfusion.UI.Xaml.Diagram.Stencil;assembly=Syncfusion.SfDiagram.WPF"
         Title="MainWindow" Height="768" Width="1024" >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,80 +20,20 @@
 
         <Grid Grid.Column="1" Width="180">
             <TabControl>
-                <TabItem Header="Nodes"></TabItem>
-                <TabItem Header="Connectors"></TabItem>
+                <TabItem Header="Nodes">
+                    <stencil:Stencil x:Name="stencil" ExpandMode="All" BorderBrush="Black" BorderThickness="0,0,1,0" >
+                        
+                    </stencil:Stencil>
+                </TabItem>
+                <TabItem Header="Connectors">
+                    
+                </TabItem>
                 <TabItem Header="Properties"></TabItem>
             </TabControl>
         </Grid>
     </Grid>
 
 
-    <!--<syncfusion:SfDiagram x:Name="diagram" Constraints="Default,Routing" Margin="51,10,-51,-10">
-            <syncfusion:SfDiagram.HorizontalRuler>
-                <syncfusion:Ruler/>
-            </syncfusion:SfDiagram.HorizontalRuler>
-            <syncfusion:SfDiagram.VerticalRuler>
-                <syncfusion:Ruler Orientation="Vertical"/>
-            </syncfusion:SfDiagram.VerticalRuler>
 
-
-            <syncfusion:SfDiagram.Nodes>
-                --><!--Initialize the Node Collection--><!--
-                <syncfusion:NodeCollection>
-                    --><!--Initialize the BpmnNodeViewModel--><!--
-                    <syncfusion:BpmnNodeViewModel ID="Db1" UnitHeight="100" UnitWidth="100" OffsetX="600" OffsetY="100" Type="DataStore" >
-                    </syncfusion:BpmnNodeViewModel>
-                    <syncfusion:BpmnNodeViewModel ID="Task1" UnitHeight="70" UnitWidth="100" OffsetX="600" OffsetY="400" Type="Activity" ActivityType="Task" TaskType="Send">
-                    </syncfusion:BpmnNodeViewModel>
-
-
-
-                </syncfusion:NodeCollection>
-            </syncfusion:SfDiagram.Nodes>
-
-
-            <syncfusion:SfDiagram.Groups>
-                --><!--Initialize the Group Collection--><!--
-                <syncfusion:GroupCollection>
-                    --><!--Initialize the BpmnGroupViewModel--><!--
-                    <syncfusion:BpmnGroupViewModel OffsetX="500" OffsetY="150" UnitHeight="600" UnitWidth="700" >
-
-
-                        <syncfusion:BpmnGroupViewModel.Connectors>
-                            <syncfusion:ConnectorCollection>
-                                <syncfusion:BpmnFlowViewModel SourceNodeID="Task1" TargetNodeID="Db1"></syncfusion:BpmnFlowViewModel>
-                            </syncfusion:ConnectorCollection>
-                        </syncfusion:BpmnGroupViewModel.Connectors>
-                    </syncfusion:BpmnGroupViewModel>
-                </syncfusion:GroupCollection>
-            </syncfusion:SfDiagram.Groups>
-
-        </syncfusion:SfDiagram>
-
-        <Grid Width="350"  Margin="801,40,-1,-80">
-            <TabControl>
-                <TabItem Header="Nodes">
-                    All Nodes
-                </TabItem>
-                <TabItem Header="Connectors">
-                    All Connectors
-                </TabItem>
-                <TabItem Header="Properties">
-                    Properties
-                </TabItem>
-            </TabControl>
-        </Grid>-->
-
-
-        <!--<Grid Width="150"  Margin="-1200,40,10,0">
-            <TabControl>
-                <TabItem Header="Tool Box">
-                    Tool Box
-                </TabItem>
-
-            </TabControl>
-        </Grid>-->
-
-    
 
 </Window>

@@ -7,13 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9F2E0AE3-937
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2C7AECDF-A789-4532-940F-A226162A8505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipatecWpf", "src\SipatecWpf\SipatecWpf.csproj", "{7DCED4AF-73B4-4929-9837-B31A9AF09CE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SipatecWpf", "src\SipatecWpf\SipatecWpf.csproj", "{7DCED4AF-73B4-4929-9837-B31A9AF09CE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Syncfusion", "Syncfusion", "{8702A490-711D-4387-BD4D-38E638F6F6AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipatecWpfSyncfusion", "src\SipatecSyncfusion\SipatecWpfSyncfusion\SipatecWpfSyncfusion.csproj", "{3D32FE1F-97CA-4F1A-B111-470F82CD7730}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SipatecWpfSyncfusion", "src\SipatecSyncfusion\SipatecWpfSyncfusion\SipatecWpfSyncfusion.csproj", "{3D32FE1F-97CA-4F1A-B111-470F82CD7730}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{DF2C3584-3BF9-4626-88EC-88332A8EEEFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SipatecSync", "SipatecSync\SipatecSync.csproj", "{4D99BB37-A356-43DD-B890-67DDFD2EB54B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{3D32FE1F-97CA-4F1A-B111-470F82CD7730}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D32FE1F-97CA-4F1A-B111-470F82CD7730}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D32FE1F-97CA-4F1A-B111-470F82CD7730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D99BB37-A356-43DD-B890-67DDFD2EB54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D99BB37-A356-43DD-B890-67DDFD2EB54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D99BB37-A356-43DD-B890-67DDFD2EB54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D99BB37-A356-43DD-B890-67DDFD2EB54B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +44,7 @@ Global
 		{8702A490-711D-4387-BD4D-38E638F6F6AD} = {9F2E0AE3-937C-4B1D-89E9-8FFD09084FD6}
 		{3D32FE1F-97CA-4F1A-B111-470F82CD7730} = {8702A490-711D-4387-BD4D-38E638F6F6AD}
 		{DF2C3584-3BF9-4626-88EC-88332A8EEEFE} = {9F2E0AE3-937C-4B1D-89E9-8FFD09084FD6}
+		{4D99BB37-A356-43DD-B890-67DDFD2EB54B} = {8702A490-711D-4387-BD4D-38E638F6F6AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {264B73AB-B239-488B-9E55-13994650E088}
