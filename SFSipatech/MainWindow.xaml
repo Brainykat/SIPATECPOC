@@ -36,8 +36,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <syncfusion:SfDiagramRibbon HorizontalAlignment="Left" Height="150" VerticalAlignment="Center" Grid.ColumnSpan="2" DataContext="{Binding ElementName=Diagram, Mode=OneWay}"/>
-        <syncfusion:SfDiagram x:Name="Diagram" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center">
+        <syncfusion:SfDiagramRibbon HorizontalAlignment="Left" Height="150" VerticalAlignment="Center" Grid.ColumnSpan="2" DataContext="{Binding ElementName=diagram, Mode=OneWay}"/>
+        <syncfusion:SfDiagram x:Name="diagram" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center">
             <syncfusion:SfDiagram.HorizontalRuler>
                 <syncfusion:Ruler/>
             </syncfusion:SfDiagram.HorizontalRuler>
