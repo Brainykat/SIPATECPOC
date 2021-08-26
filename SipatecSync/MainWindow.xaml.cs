@@ -28,13 +28,17 @@ namespace SipatecSync
     public MainWindow()
     {
       InitializeComponent();
+      //MyStencil();
+    }
+    public void MyStencil()
+    {
       Stencil stencil = new Stencil()
       {
         ExpandMode = ExpandMode.All,
         BorderThickness = new Thickness(0, 0, 1, 0),
         BorderBrush = new SolidColorBrush(Colors.Black)
       };
-
+      //Define the SymbolSource with SymbolCollection.
       stencil.SymbolSource = new SymbolCollection();
 
       //Initialize the diagram element.
@@ -45,18 +49,6 @@ namespace SipatecSync
         OffsetX = 100,
         OffsetY = 100,
         Shape = App.Current.MainWindow.Resources["Rectangle"],
-      };
-      NodeViewModel tank = new CustomNode()
-      {
-        UnitHeight = 70,
-        UnitWidth = 100,
-        OffsetX = 100,
-        OffsetY = 100,
-        Shape = App.Current.MainWindow.Resources["Cylinder"],
-        Name = "Tank",
-        Datatype = PropertyDatatype.Decimal,
-        SIUnit = "Liters"
-        
       };
 
       ConnectorViewModel cvm = new ConnectorViewModel()
@@ -98,12 +90,9 @@ namespace SipatecSync
     }
       };
       //Adding an element to the collection.
-      (stencil.SymbolSource as SymbolCollection).Add(tank);
       (stencil.SymbolSource as SymbolCollection).Add(node);
       (stencil.SymbolSource as SymbolCollection).Add(cvm);
       (stencil.SymbolSource as SymbolCollection).Add(grp);
-
-      //Adding the ISymbol to the SymbolCollection.
     }
     private void MainWindow_ItemAdded(object sender, ItemAddedEventArgs args)
     {
@@ -119,7 +108,7 @@ namespace SipatecSync
     }
     
   }
-  public class SymbolCollection : ObservableCollection<Object>
+  public class SymbolCollection : ObservableCollection<object>
   {
   }
 }
