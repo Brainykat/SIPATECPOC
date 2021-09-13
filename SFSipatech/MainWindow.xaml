@@ -26,8 +26,21 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <DataTemplate x:Key="viewtemplate">
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <!--<Image Source="{Binding Path=Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />-->
+                    <Image Source="/Images/fan.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />
+                </Border>
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
+    <!--<ResourceDictionary>
+        <DataTemplate x:Key="viewtemplate">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Image Source="{Binding Path=Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />
+            </Border>
+        </DataTemplate>
+    </ResourceDictionary>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -59,13 +59,15 @@ namespace SFSipatech
         List<CustomNode> nodes = JsonConvert.DeserializeObject<List<CustomNode>>(File.ReadAllText(path));
         foreach (var nd in nodes)
         {
+          var dttemplate = this.Resources["viewtemplate"] as DataTemplate;
           SymbolViewModel mynode = new SymbolViewModel()
           {
             Symbol = nd.Name,
             Key = Guid.NewGuid(),
             Name = nd.Name,
+            //Content = "",
             //Menu = new MenuItem { Name }
-            SymbolTemplate = this.Resources["symboltemplate"] as DataTemplate
+            SymbolTemplate = this.Resources["viewtemplate"] as DataTemplate
           };
           (stencil.SymbolSource as SymbolCollection).Add(mynode);
         }
