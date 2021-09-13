@@ -1,0 +1,65 @@
+{
+  "Nodes": [
+    {
+      "Name": "Pipe",
+      "Properties": [
+        {
+          "key": "id",
+          "value": "",
+          "type": "GUID"
+        },
+        {
+          "key": "diameter",
+          "value": "",
+          "type": "double"
+        },
+        {
+          "key": "thickness",
+          "value": "",
+          "type": "double"
+        }
+      ]
+    },
+    {
+      "Name": "Fan",
+      "Properties": [
+        {
+          "key": "id",
+          "value": "",
+          "type": "GUID"
+        },
+        {
+          "key": "speed",
+          "value": "",
+          "type": "double"
+        },
+        {
+          "key": "voltage",
+          "value": "",
+          "type": "double"
+        }
+      ]
+    },
+    {
+      "Name": "Tank",
+      "Properties": [
+        {
+          "key": "id",
+          "value": "",
+          "type": "GUID"
+        },
+        {
+          "key": "capacity",
+          "value": "",
+          "type": "double"
+        },
+        {
+          "key": "pressure",
+          "value": "",
+          "type": "double"
+        }
+      ]
+    }
+  ]
+
+}

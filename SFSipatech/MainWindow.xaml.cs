@@ -47,62 +47,25 @@ namespace SFSipatech
     }
     public void AddStensil()
     {
-      
-      //Define the SymbolSource with SymbolCollection.
+
       stencil.SymbolSource = new SymbolCollection();
 
-      //Initialize the diagram element.
-      NodeViewModel node = new NodeViewModel()
+      //Initialize the SymbolItem.
+      SymbolViewModel imagenode = new SymbolViewModel()
       {
-        UnitHeight = 70,
-        UnitWidth = 100,
-        OffsetX = 100,
-        OffsetY = 100,
-        Shape = App.Current.MainWindow.Resources["Rectangle"],
+        Symbol = "User",
+        SymbolTemplate = this.Resources["symboltemplate"] as DataTemplate
       };
 
-      ConnectorViewModel cvm = new ConnectorViewModel()
+      SymbolViewModel symbol = new SymbolViewModel()
       {
-        SourcePoint = new Point(100, 100),
-        TargetPoint = new Point(200, 200),
+        Symbol = "Diamond",
+        SymbolTemplate = this.Resources["Diamond"] as DataTemplate
       };
 
-      GroupViewModel grp = new GroupViewModel()
-      {
-        Nodes = new NodeCollection()
-    {
-       new NodeViewModel()
-       {
-         ID="srcnode",
-         UnitHeight=70,
-         UnitWidth=100,
-         OffsetX=0,
-         OffsetY=300,
-         Shape=App.Current.Resources["Rectangle"]
-        },
-       new NodeViewModel()
-       {
-        ID="tarnode",
-        UnitHeight=70,
-        UnitWidth=100,
-        OffsetX=100,
-        OffsetY=500,
-        Shape=App.Current.Resources["Rectangle"]
-        }
-    },
-        Connectors = new ConnectorCollection()
-    {
-      new ConnectorViewModel()
-      {
-        SourceNodeID="srcnode",
-        TargetNodeID="tarnode"
-      }
-    }
-      };
-      //Adding an element to the collection.
-      (stencil.SymbolSource as SymbolCollection).Add(node);
-      (stencil.SymbolSource as SymbolCollection).Add(cvm);
-      (stencil.SymbolSource as SymbolCollection).Add(grp);
+      //Adding the element to the collection.
+      (stencil.SymbolSource as SymbolCollection).Add(imagenode);
+      (stencil.SymbolSource as SymbolCollection).Add(symbol);
     }
   }
   public class SymbolCollection : ObservableCollection<Object>
