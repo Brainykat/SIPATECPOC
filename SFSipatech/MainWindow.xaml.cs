@@ -42,12 +42,32 @@ namespace SFSipatech
       //(diagram.Info as IGraphInfo).MenuItemClickedEvent += MainPage_MenuItemClickedEvent;
       //diagram.Menu.MenuItems.Add(menu);
       AddStensil();
-      
+      (diagram.Info as IGraphInfo).ItemDropEvent += MainWindow_ItemDropEvent;
+      (diagram.Info as IGraphInfo).ItemAdded += MainWindow_ItemAdded;
     }
     void MainPage_MenuItemClickedEvent(object sender, MenuItemClickedEventArgs args)
     {
       //Source – in which object Event get fired
       //Item - MenuItem
+    }
+    private void MainWindow_ItemDropEvent(object sender, ItemDropEventArgs args)
+    {
+      //UNDONE: Set Node properties
+      //To cancel item drop if symbols are basic shapes.
+      if (args.ItemSource == Cause.Stencil && args.Source is INode && (args.Source as INode).Key.ToString() == "Basic Shapes")
+      {
+        args.Cancel = true;
+      }
+    }
+    private void MainWindow_ItemAdded(object sender, ItemAddedEventArgs args)
+    {
+      if (args.Item is CustomNode)
+      {
+        CustomNode node = args.Item as CustomNode;
+        //content and contenttemplate returns null, so we have used the CustomContent and CustomContentTemplate properties to restore its values. 
+        //node.Content = node.CustomContent;
+        //node.ContentTemplate = App.Current.MainWindow.Resources[node.CustomContentTemplate] as DataTemplate;
+      }
     }
     public void AddStensil()
     {
@@ -60,19 +80,24 @@ namespace SFSipatech
         foreach (var nd in nodes)
         {
           var dttemplate = this.Resources["viewtemplate"] as DataTemplate;
-          var menus = new ObservableCollection<DiagramMenuItem>();
+          dttemplate.Resources["Content"] = "/Images/fan.png";
+          //var menus = new ObservableCollection<DiagramMenuItem>();
+          var obj = new List<CustomProperties>();
           foreach (var p in nd.Properties)
           {
-            menus.Add(new DiagramMenuItem { Content = p.key });
+            obj.Add(new CustomProperties { Key = p.key, Value = p.value });
+            //menus.Add(new DiagramMenuItem { Content = p.key });
           }
+          
           SymbolViewModel mynode = new SymbolViewModel()
           {
-            Symbol = nd.Name,
+            Symbol = obj,
             Key = Guid.NewGuid(),
             Name = nd.Name,
-            //Content = "",
-            Menu = new DiagramMenu { MenuItems = menus},
-            SymbolTemplate = this.Resources["viewtemplate"] as DataTemplate
+            //Content = "/Images/fan.png",
+            //Menu = new DiagramMenu { MenuItems = menus},
+            //ContentTemplate = this.Resources["viewtemplate"] as DataTemplate
+            SymbolTemplate = dttemplate // this.Resources["viewtemplate"] as DataTemplate
           };
           (stencil.SymbolSource as SymbolCollection).Add(mynode);
         }
@@ -86,5 +111,9 @@ namespace SFSipatech
   public class SymbolCollection : ObservableCollection<Object>
   {
   }
-
+  public class CustomProperties
+  {
+    public string Key { get; set; }
+    public string Value { get; set; }
+  }
 }
