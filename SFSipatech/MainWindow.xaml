@@ -59,18 +59,19 @@
                 <syncfusion:GroupCollection/>
             </syncfusion:SfDiagram.Groups>
         </syncfusion:SfDiagram>
-        <syncfusion:Stencil Grid.Row="1" Grid.Column="0" Width="200" Title="Shapes">
-            <syncfusion:Stencil.Categories>
+        <stencil:Stencil x:Name="stencil" ExpandMode="All" BorderBrush="Black" BorderThickness="0,0,1,0" Grid.Row="1" Grid.Column="0"/>
+        <!--<syncfusion:Stencil Grid.Row="1" Grid.Column="0" Width="200" Title="Shapes">
+            --><!--<syncfusion:Stencil.Categories>
                 <syncfusion:StencilCategoryCollection>
                     <syncfusion:StencilCategory Title="Basic Shapes" Keys="{StaticResource BasicShapes}"/>
                     <syncfusion:StencilCategory Title="Flow Shapes" Keys="{StaticResource FlowShapes}"/>
                 </syncfusion:StencilCategoryCollection>
-            </syncfusion:Stencil.Categories>
+            </syncfusion:Stencil.Categories>--><!--
             <syncfusion:Stencil.SymbolGroups>
                 <syncfusion:SymbolGroups>
                     <syncfusion:SymbolGroupProvider MappingName="Key"/>
                 </syncfusion:SymbolGroups>
             </syncfusion:Stencil.SymbolGroups>
-        </syncfusion:Stencil>
+        </syncfusion:Stencil>-->
     </Grid>
 </Window>

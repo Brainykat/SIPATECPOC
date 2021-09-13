@@ -33,20 +33,11 @@ namespace SFSipatech
       diagram.PageSettings.PageBorderBrush = new SolidColorBrush(Colors.Transparent);
       DiagramMenuItem menu = new DiagramMenuItem()
       {
-        Content = "Name"
-      };
-      DiagramMenuItem menu1 = new DiagramMenuItem()
-      {
-        Content = "Value"
-      };
-      DiagramMenuItem menu2 = new DiagramMenuItem()
-      {
-        Content = "Unit",
+        Content = "Properties"
       };
       (diagram.Info as IGraphInfo).MenuItemClickedEvent += MainPage_MenuItemClickedEvent;
       diagram.Menu.MenuItems.Add(menu);
-      diagram.Menu.MenuItems.Add(menu1);
-      diagram.Menu.MenuItems.Add(menu2);
+      AddStensil();
       
     }
     void MainPage_MenuItemClickedEvent(object sender, MenuItemClickedEventArgs args)
@@ -54,6 +45,68 @@ namespace SFSipatech
       //Source – in which object Event get fired
       //Item - MenuItem
     }
+    public void AddStensil()
+    {
+      
+      //Define the SymbolSource with SymbolCollection.
+      stencil.SymbolSource = new SymbolCollection();
+
+      //Initialize the diagram element.
+      NodeViewModel node = new NodeViewModel()
+      {
+        UnitHeight = 70,
+        UnitWidth = 100,
+        OffsetX = 100,
+        OffsetY = 100,
+        Shape = App.Current.MainWindow.Resources["Rectangle"],
+      };
+
+      ConnectorViewModel cvm = new ConnectorViewModel()
+      {
+        SourcePoint = new Point(100, 100),
+        TargetPoint = new Point(200, 200),
+      };
+
+      GroupViewModel grp = new GroupViewModel()
+      {
+        Nodes = new NodeCollection()
+    {
+       new NodeViewModel()
+       {
+         ID="srcnode",
+         UnitHeight=70,
+         UnitWidth=100,
+         OffsetX=0,
+         OffsetY=300,
+         Shape=App.Current.Resources["Rectangle"]
+        },
+       new NodeViewModel()
+       {
+        ID="tarnode",
+        UnitHeight=70,
+        UnitWidth=100,
+        OffsetX=100,
+        OffsetY=500,
+        Shape=App.Current.Resources["Rectangle"]
+        }
+    },
+        Connectors = new ConnectorCollection()
+    {
+      new ConnectorViewModel()
+      {
+        SourceNodeID="srcnode",
+        TargetNodeID="tarnode"
+      }
+    }
+      };
+      //Adding an element to the collection.
+      (stencil.SymbolSource as SymbolCollection).Add(node);
+      (stencil.SymbolSource as SymbolCollection).Add(cvm);
+      (stencil.SymbolSource as SymbolCollection).Add(grp);
+    }
   }
-  
+  public class SymbolCollection : ObservableCollection<Object>
+  {
+  }
+
 }
