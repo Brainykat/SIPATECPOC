@@ -52,13 +52,13 @@ namespace SFSipatech
     }
     private void MainWindow_ItemDropEvent(object sender, ItemDropEventArgs args)
     {
-      //System.Windows.MessageBox.Show($"Item Dropped {sender.ToString()}");
+      System.Windows.MessageBox.Show($"Item Dropped {sender.ToString()}", "Confirmation", MessageBoxButton.YesNo);
       //UNDONE: Set Node properties
       //To cancel item drop if symbols are basic shapes.
-      if (args.ItemSource == Cause.Stencil && args.Source is INode && (args.Source as INode).Key.ToString() == "Basic Shapes")
-      {
-        args.Cancel = true;
-      }
+      //if (args.ItemSource == Cause.Stencil && args.Source is INode && (args.Source as INode).Key.ToString() == "Basic Shapes")
+      //{
+      //  args.Cancel = true;
+      //}
     }
     private void MainWindow_ItemAdded(object sender, ItemAddedEventArgs args)
     {
@@ -81,8 +81,6 @@ namespace SFSipatech
         List<CustomNode> nodes = JsonConvert.DeserializeObject<List<CustomNode>>(File.ReadAllText(path));
         foreach (var nd in nodes)
         {
-          var dttemplate = this.Resources["viewtemplate"] as DataTemplate;
-          dttemplate.Resources["Content"] = "/Images/fan.png";
           //var menus = new ObservableCollection<DiagramMenuItem>();
           var obj = new List<CustomProperties>();
           foreach (var p in nd.Properties)
@@ -90,16 +88,16 @@ namespace SFSipatech
             obj.Add(new CustomProperties { Key = p.key, Value = p.value });
             //menus.Add(new DiagramMenuItem { Content = p.key });
           }
-          
-          SymbolViewModel mynode = new SymbolViewModel()
+
+          NodeViewModel mynode = new NodeViewModel()
           {
-            Symbol = obj,
+            //Symbol = obj,
             Key = Guid.NewGuid(),
             Name = nd.Name,
-            //Content = "/Images/fan.png",
+            Content = MakeImage( "/Images/fan.png"),
             //Menu = new DiagramMenu { MenuItems = menus},
-            //ContentTemplate = this.Resources["viewtemplate"] as DataTemplate
-            SymbolTemplate = dttemplate // this.Resources["viewtemplate"] as DataTemplate
+            ContentTemplate = this.Resources["viewtemplate"] as DataTemplate
+            //SymbolTemplate =  this.Resources["viewtemplate"] as DataTemplate
           };
           (stencil.SymbolSource as SymbolCollection).Add(mynode);
         }
@@ -108,6 +106,20 @@ namespace SFSipatech
       {
         var er = ex;
       }
+    }
+
+    public Image MakeImage(string path)
+    {
+      Image img = new Image();
+      BitmapImage bmp = new BitmapImage();
+      bmp.BeginInit();
+      bmp.UriSource = new Uri(path, UriKind.Relative);
+      bmp.EndInit();
+      img.Stretch = Stretch.Fill;
+      img.Source = bmp;
+      img.Height = 100;
+      img.Width = 100;
+      return img;
     }
   }
   public class SymbolCollection : ObservableCollection<Object>
