@@ -52,6 +52,7 @@ namespace SFSipatech
     }
     private void MainWindow_ItemDropEvent(object sender, ItemDropEventArgs args)
     {
+      //System.Windows.MessageBox.Show($"Item Dropped {sender.ToString()}");
       //UNDONE: Set Node properties
       //To cancel item drop if symbols are basic shapes.
       if (args.ItemSource == Cause.Stencil && args.Source is INode && (args.Source as INode).Key.ToString() == "Basic Shapes")
@@ -61,6 +62,7 @@ namespace SFSipatech
     }
     private void MainWindow_ItemAdded(object sender, ItemAddedEventArgs args)
     {
+      //System.Windows.MessageBox.Show($"Item Added {sender.ToString()}");
       if (args.Item is CustomNode)
       {
         CustomNode node = args.Item as CustomNode;
