@@ -60,13 +60,18 @@ namespace SFSipatech
         foreach (var nd in nodes)
         {
           var dttemplate = this.Resources["viewtemplate"] as DataTemplate;
+          var menus = new ObservableCollection<DiagramMenuItem>();
+          foreach (var p in nd.Properties)
+          {
+            menus.Add(new DiagramMenuItem { Content = p.key });
+          }
           SymbolViewModel mynode = new SymbolViewModel()
           {
             Symbol = nd.Name,
             Key = Guid.NewGuid(),
             Name = nd.Name,
             //Content = "",
-            //Menu = new MenuItem { Name }
+            Menu = new DiagramMenu { MenuItems = menus},
             SymbolTemplate = this.Resources["viewtemplate"] as DataTemplate
           };
           (stencil.SymbolSource as SymbolCollection).Add(mynode);

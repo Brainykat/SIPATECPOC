@@ -1,7 +1,7 @@
 [
     {
       "Name": "Pipe",
-      "Image": "",
+      "Image": "pipe.png",
       "Properties": [
         {
           "key": "id",
@@ -22,7 +22,7 @@
     },
     {
       "Name": "Fan",
-      "Image": "",
+      "Image": "fan.png",
       "Properties": [
         {
           "key": "id",
@@ -43,7 +43,7 @@
     },
     {
       "Name": "Tank",
-      "Image": "",
+      "Image": "tank.png",
       "Properties": [
         {
           "key": "id",
