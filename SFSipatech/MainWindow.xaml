@@ -10,7 +10,11 @@
         mc:Ignorable="d"
         Title="Sipatec" Height="450" Width="800">
     <Window.Resources>
-        <!--<Style TargetType="syncfusion:Node">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Syncfusion.SfDiagram.WPF;component/Resources/BasicShapes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="syncfusion:Node">
                 <Setter Property="ShapeStyle">
                     <Setter.Value>
                         <Style TargetType="Path">
@@ -22,61 +26,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style TargetType="Path"  x:Key="shapestyle">
-            <Setter Property="Fill" Value="Transparent"/>
-            <Setter Property="Stroke" Value="Black"/>
-            <Setter Property="Stretch" Value="Fill"/>
-            <Setter Property="StrokeThickness" Value="2"/>
-        </Style>-->
-
-        <Style TargetType="syncfusion:Node" BasedOn="{StaticResource NodeBindingStyle}">
-            <Setter Property="Background" Value="Transparent"/>
-        </Style>
-        <Style TargetType="syncfusion:Connector" BasedOn="{StaticResource ConnectorBindingStyle}">
-
-        </Style>
-        <Style TargetType="syncfusion:AnnotationEditor" BasedOn="{StaticResource AnnotationEditorBindingStyle}">
-
-        </Style>
-        <Style TargetType="stencil:Symbol">
-            <Setter Property="Width" Value="50" />
-            <Setter Property="Height" Value="50" />
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Margin" Value="4"></Setter>
-        </Style>
-
-        <Style TargetType="stencil:SymbolGroup">
-            <Setter Property="FontFamily" Value="Regular"/>
-            <Setter Property="Background" Value="#ffffff"/>
-            <Setter Property="Foreground" Value="#222222"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="HeaderTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <stencil:Header>
-                            <stencil:Header.Template>
-                                <ControlTemplate TargetType="stencil:Header">
-                                    <Grid>
-                                        <Border x:Name="header" Background="#f5f5f5" BorderBrush="#dfdfdf" 
-                                                BorderThickness="1">
-                                            <ContentPresenter Margin="10" Content="{Binding}"/>
-                                        </Border>
-                                    </Grid>
-                                </ControlTemplate>
-                            </stencil:Header.Template>
-                        </stencil:Header>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="SymbolStyle" TargetType="Path">
-            <Setter Property="Fill" Value="#FFFFFF"/>
-            <Setter Property="Stroke" Value="#FF7F7F7F"/>
-            <Setter Property="StrokeThickness" Value="1"/>
-            <Setter Property="Stretch" Value="Fill"/>
-        </Style>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -109,7 +59,7 @@
                 <syncfusion:GroupCollection/>
             </syncfusion:SfDiagram.Groups>
         </syncfusion:SfDiagram>
-        <!--<syncfusion:Stencil Grid.Row="1" Grid.Column="0" Width="200" Title="Shapes">
+        <syncfusion:Stencil Grid.Row="1" Grid.Column="0" Width="200" Title="Shapes">
             <syncfusion:Stencil.Categories>
                 <syncfusion:StencilCategoryCollection>
                     <syncfusion:StencilCategory Title="Basic Shapes" Keys="{StaticResource BasicShapes}"/>
@@ -121,67 +71,6 @@
                     <syncfusion:SymbolGroupProvider MappingName="Key"/>
                 </syncfusion:SymbolGroups>
             </syncfusion:Stencil.SymbolGroups>
-        </syncfusion:Stencil>-->
-        <stencil:Stencil x:Name="stencil" Grid.Column="0" Grid.Row="1" ExpandMode="All" BorderBrush="#dfdfdf"
-                             BorderThickness="0,0,1,0">
-            <stencil:Stencil.SymbolGroups>
-                <stencil:SymbolGroups>
-                    <stencil:SymbolGroupProvider MappingName="Key"/>
-                </stencil:SymbolGroups>
-            </stencil:Stencil.SymbolGroups>
-            <stencil:Stencil.SelectedFilter>
-                <syncfusion:SymbolFilterProvider SymbolFilter="SymbolFilter">
-                </syncfusion:SymbolFilterProvider>
-            </stencil:Stencil.SelectedFilter>
-            <stencil:Stencil.SymbolSource>
-                <local:SymbolCollection>
-                    <local:CustomNode ContenTempName="custombuttontemplate"  UnitHeight="50"   Key="Controls" UnitWidth="70" ContentTemplate="{StaticResource custombuttontemplate}">
-                        <local:CustomNode.Content>
-                            <local:CustomButton Text="Button" ></local:CustomButton>
-                        </local:CustomNode.Content>
-                    </local:CustomNode>
-                    <local:CustomNode ContenTempName="customcomboboxtemplate" UnitHeight="50"   Key="Controls" UnitWidth="100" ContentTemplate="{StaticResource customcomboboxtemplate}">
-                        <local:CustomNode.Content>
-                            <local:CustomComboBox>
-                                <local:CustomComboBox.Items>
-                                    <local:ComboboxItems>
-                                        <local:Person Name="combobox1"></local:Person>
-                                        <local:Person Name="combobox2"></local:Person>
-                                    </local:ComboboxItems>
-
-                                </local:CustomComboBox.Items>
-                            </local:CustomComboBox>
-                        </local:CustomNode.Content>
-                    </local:CustomNode>
-                    <local:CustomNode ContenTempName="customDataGridtemplate"  UnitHeight="70"   Key="Controls" UnitWidth="200" ContentTemplate="{StaticResource customDataGridtemplate}">
-                        <local:CustomNode.Content>
-                            <local:CustomDataGrid >
-                                <local:CustomDataGrid.Employees>
-                                    <local:EmployeeCollection>
-                                        <local:Employee Id="1" Name="Emp1" PhoneNumber="123456"></local:Employee>
-                                        <local:Employee Id="2" Name="Emp2" PhoneNumber="123456"></local:Employee>
-                                    </local:EmployeeCollection>
-                                </local:CustomDataGrid.Employees>
-                            </local:CustomDataGrid>
-                        </local:CustomNode.Content>
-                    </local:CustomNode>
-                    <local:CustomNode ContenTempName="customTextBoxtemplate"  UnitHeight="50"   Key="Controls" UnitWidth="70" ContentTemplate="{StaticResource customTextBoxtemplate}">
-                        <local:CustomNode.Content>
-                            <local:CustomTextBox Text="TextBox"></local:CustomTextBox>
-                        </local:CustomNode.Content>
-                    </local:CustomNode>
-                    <local:CustomNode ContenTempName="customtextBlocktemplate"  UnitHeight="50"   Key="Controls" UnitWidth="70" ContentTemplate="{StaticResource customtextBlocktemplate}">
-                        <local:CustomNode.Content>
-                            <local:CustomTextBlock Text="textBlock"></local:CustomTextBlock>
-                        </local:CustomNode.Content>
-                    </local:CustomNode>
-                    <local:CustomNode ContenTempName="customEllipsetemplate"  UnitHeight="50"   Key="Controls" UnitWidth="70" ContentTemplate="{StaticResource customEllipsetemplate}">
-                        <local:CustomNode.Content>
-                            <local:CustomEllipse Text="Ellipse"></local:CustomEllipse>
-                        </local:CustomNode.Content>
-                    </local:CustomNode>
-                </local:SymbolCollection>
-            </stencil:Stencil.SymbolSource>
-        </stencil:Stencil>
+        </syncfusion:Stencil>
     </Grid>
 </Window>
