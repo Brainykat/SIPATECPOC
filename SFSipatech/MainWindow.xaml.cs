@@ -1,11 +1,15 @@
-﻿using Syncfusion.SfSkinManager;
+﻿using Newtonsoft.Json;
+using SFSipatech.Models;
+using Syncfusion.SfSkinManager;
 using Syncfusion.UI.Xaml.Diagram;
 using Syncfusion.UI.Xaml.Diagram.Controls;
 using Syncfusion.UI.Xaml.Diagram.Stencil;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,12 +35,12 @@ namespace SFSipatech
       InitializeComponent();
       SfSkinManager.SetTheme(this, new Theme() { ThemeName = "Office2019Colorful" });
       diagram.PageSettings.PageBorderBrush = new SolidColorBrush(Colors.Transparent);
-      DiagramMenuItem menu = new DiagramMenuItem()
-      {
-        Content = "Properties"
-      };
-      (diagram.Info as IGraphInfo).MenuItemClickedEvent += MainPage_MenuItemClickedEvent;
-      diagram.Menu.MenuItems.Add(menu);
+      //DiagramMenuItem menu = new DiagramMenuItem()
+      //{
+      //  Content = "Properties"
+      //};
+      //(diagram.Info as IGraphInfo).MenuItemClickedEvent += MainPage_MenuItemClickedEvent;
+      //diagram.Menu.MenuItems.Add(menu);
       AddStensil();
       
     }
@@ -47,25 +51,29 @@ namespace SFSipatech
     }
     public void AddStensil()
     {
-
-      stencil.SymbolSource = new SymbolCollection();
-
-      //Initialize the SymbolItem.
-      SymbolViewModel imagenode = new SymbolViewModel()
+      try
       {
-        Symbol = "User",
-        SymbolTemplate = this.Resources["symboltemplate"] as DataTemplate
-      };
-
-      SymbolViewModel symbol = new SymbolViewModel()
+        stencil.SymbolSource = new SymbolCollection();
+        //var path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "\\CustomNodes.json");
+        string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"CustomNodes.json");
+        List<CustomNode> nodes = JsonConvert.DeserializeObject<List<CustomNode>>(File.ReadAllText(path));
+        foreach (var nd in nodes)
+        {
+          SymbolViewModel mynode = new SymbolViewModel()
+          {
+            Symbol = nd.Name,
+            Key = Guid.NewGuid(),
+            Name = nd.Name,
+            //Menu = new MenuItem { Name }
+            SymbolTemplate = this.Resources["symboltemplate"] as DataTemplate
+          };
+          (stencil.SymbolSource as SymbolCollection).Add(mynode);
+        }
+      }
+      catch (Exception ex)
       {
-        Symbol = "Diamond",
-        SymbolTemplate = this.Resources["Diamond"] as DataTemplate
-      };
-
-      //Adding the element to the collection.
-      (stencil.SymbolSource as SymbolCollection).Add(imagenode);
-      (stencil.SymbolSource as SymbolCollection).Add(symbol);
+        var er = ex;
+      }
     }
   }
   public class SymbolCollection : ObservableCollection<Object>

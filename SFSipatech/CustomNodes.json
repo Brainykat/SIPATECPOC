@@ -1,7 +1,7 @@
-{
-  "Nodes": [
+[
     {
       "Name": "Pipe",
+      "Image": "",
       "Properties": [
         {
           "key": "id",
@@ -22,6 +22,7 @@
     },
     {
       "Name": "Fan",
+      "Image": "",
       "Properties": [
         {
           "key": "id",
@@ -42,6 +43,7 @@
     },
     {
       "Name": "Tank",
+      "Image": "",
       "Properties": [
         {
           "key": "id",
@@ -62,4 +64,4 @@
     }
   ]
 
-}
+
