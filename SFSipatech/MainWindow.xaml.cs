@@ -82,10 +82,13 @@ namespace SFSipatech
         foreach (var nd in nodes)
         {
           //var menus = new ObservableCollection<DiagramMenuItem>();
-          var obj = new List<CustomProperties>();
+          var obj = new ObservableCollection<IAnnotation>();
           foreach (var p in nd.Properties)
           {
-            obj.Add(new CustomProperties { Key = p.key, Value = p.value });
+            obj.Add(new AnnotationEditorViewModel()
+            {
+              Content = $"{p.key} {p.value}"
+            }); ;
             //menus.Add(new DiagramMenuItem { Content = p.key });
           }
 
@@ -94,10 +97,11 @@ namespace SFSipatech
             //Symbol = obj,
             Key = Guid.NewGuid(),
             Name = nd.Name,
-            Content = MakeImage( "/Images/fan.png"),
+            //Content = MakeImage( "/Images/fan.png"),
             //Menu = new DiagramMenu { MenuItems = menus},
-            ContentTemplate = this.Resources["viewtemplate"] as DataTemplate
-            //SymbolTemplate =  this.Resources["viewtemplate"] as DataTemplate
+            ContentTemplate = this.Resources[nd.DataTemplate] as DataTemplate,
+            //SymbolTemplate =  this.Resources[nd.DataTemplate] as DataTemplate,
+            Annotations = obj
           };
           (stencil.SymbolSource as SymbolCollection).Add(mynode);
         }

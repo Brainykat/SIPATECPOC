@@ -1,67 +1,67 @@
 [
-    {
-      "Name": "Pipe",
-      "Image": "pipe.png",
-      "Properties": [
-        {
-          "key": "id",
-          "value": "",
-          "type": "GUID"
-        },
-        {
-          "key": "diameter",
-          "value": "",
-          "type": "double"
-        },
-        {
-          "key": "thickness",
-          "value": "",
-          "type": "double"
-        }
-      ]
-    },
-    {
-      "Name": "Fan",
-      "Image": "fan.png",
-      "Properties": [
-        {
-          "key": "id",
-          "value": "",
-          "type": "GUID"
-        },
-        {
-          "key": "speed",
-          "value": "",
-          "type": "double"
-        },
-        {
-          "key": "voltage",
-          "value": "",
-          "type": "double"
-        }
-      ]
-    },
-    {
-      "Name": "Tank",
-      "Image": "tank.png",
-      "Properties": [
-        {
-          "key": "id",
-          "value": "",
-          "type": "GUID"
-        },
-        {
-          "key": "capacity",
-          "value": "",
-          "type": "double"
-        },
-        {
-          "key": "pressure",
-          "value": "",
-          "type": "double"
-        }
-      ]
-    }
+  {
+    "Name": "Pipe",
+    "DataTemplate": "pipetemplate",
+    "Properties": [
+      {
+        "key": "id",
+        "value": "",
+        "type": "GUID"
+      },
+      {
+        "key": "diameter",
+        "value": "",
+        "type": "double"
+      },
+      {
+        "key": "thickness",
+        "value": "",
+        "type": "double"
+      }
+    ]
+  },
+  {
+    "Name": "Fan",
+    "DataTemplate": "fantemplate",
+    "Properties": [
+      {
+        "key": "id",
+        "value": "",
+        "type": "GUID"
+      },
+      {
+        "key": "speed",
+        "value": "",
+        "type": "double"
+      },
+      {
+        "key": "voltage",
+        "value": "",
+        "type": "double"
+      }
+    ]
+  },
+  {
+    "Name": "Tank",
+    "DataTemplate": "tanktemplate",
+    "Properties": [
+      {
+        "key": "id",
+        "value": "",
+        "type": "GUID"
+      },
+      {
+        "key": "capacity",
+        "value": "",
+        "type": "double"
+      },
+      {
+        "key": "pressure",
+        "value": "",
+        "type": "double"
+      }
+    ]
+  }
   ]
 
 

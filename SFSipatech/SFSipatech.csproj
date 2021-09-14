@@ -160,6 +160,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\tank.png" />
     <Resource Include="Images\fan.png" />
     <Content Include="Images\fan.svg" />
     <Resource Include="Images\user_image.png" />

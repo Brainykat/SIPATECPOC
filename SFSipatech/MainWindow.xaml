@@ -26,11 +26,20 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <DataTemplate x:Key="viewtemplate">
-                <Border BorderBrush="Black" BorderThickness="1">
-                    <!--<Image Source="{Binding Path=Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />-->
-                    <Image Source="/Images/sfan.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />
-                </Border>
+            <DataTemplate x:Key="fantemplate">
+                <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                    <Image Source="/Images/fan.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />
+                <!--</Border>-->
+            </DataTemplate>
+            <DataTemplate x:Key="pipetemplate">
+                <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                    <Image Source="/Images/user_image.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />
+                <!--</Border>-->
+            </DataTemplate>
+            <DataTemplate x:Key="tanktemplate">
+                <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                    <Image Source="/Images/tank.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="60" Stretch="Fill" />
+                <!--</Border>-->
             </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
@@ -63,7 +72,8 @@
                 <syncfusion:Ruler Orientation="Vertical"/>
             </syncfusion:SfDiagram.VerticalRuler>
             <syncfusion:SfDiagram.Nodes>
-                <syncfusion:NodeCollection/>
+                <syncfusion:NodeCollection>
+                </syncfusion:NodeCollection>
             </syncfusion:SfDiagram.Nodes>
             <syncfusion:SfDiagram.Connectors>
                 <syncfusion:ConnectorCollection/>

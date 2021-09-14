@@ -10,7 +10,7 @@ namespace SFSipatech.Models
   {
     public string Name { get; set; }
     public List<Property> Properties { get; set; }
-    public string Image { get; set; }
+    public string DataTemplate { get; set; }
   }
   public class Property
   {
