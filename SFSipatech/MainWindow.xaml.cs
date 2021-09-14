@@ -81,27 +81,27 @@ namespace SFSipatech
         List<CustomNode> nodes = JsonConvert.DeserializeObject<List<CustomNode>>(File.ReadAllText(path));
         foreach (var nd in nodes)
         {
-          //var menus = new ObservableCollection<DiagramMenuItem>();
-          var obj = new ObservableCollection<IAnnotation>();
+          var menus = new ObservableCollection<DiagramMenuItem>();
+          //var obj = new ObservableCollection<IAnnotation>();
+          var obj = new List<CustomProperties>();
           foreach (var p in nd.Properties)
           {
-            obj.Add(new AnnotationEditorViewModel()
-            {
-              Content = $"{p.key} {p.value}"
-            }); ;
-            //menus.Add(new DiagramMenuItem { Content = p.key });
+            obj.Add(new CustomProperties { Key = p.key, Value = p.value });
+            //obj.Add(new AnnotationEditorViewModel(){Content = $"{p.key} {p.value}" }); 
+            menus.Add(new DiagramMenuItem { Content = p.key });
           }
 
-          NodeViewModel mynode = new NodeViewModel()
+          SymbolViewModel mynode = new SymbolViewModel()
           {
-            //Symbol = obj,
+            Symbol = obj,
             Key = Guid.NewGuid(),
             Name = nd.Name,
+            
             //Content = MakeImage( "/Images/fan.png"),
-            //Menu = new DiagramMenu { MenuItems = menus},
-            ContentTemplate = this.Resources[nd.DataTemplate] as DataTemplate,
-            //SymbolTemplate =  this.Resources[nd.DataTemplate] as DataTemplate,
-            Annotations = obj
+            Menu = new DiagramMenu { MenuItems = menus},
+            //ContentTemplate = this.Resources[nd.DataTemplate] as DataTemplate,
+            SymbolTemplate =  this.Resources[nd.DataTemplate] as DataTemplate,
+            //Annotations = obj
           };
           (stencil.SymbolSource as SymbolCollection).Add(mynode);
         }
